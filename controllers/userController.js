@@ -88,7 +88,9 @@ const tempPassword = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error('Please go to forgot password page, try again');
+    throw new Error(
+      'Enter the entered temporary passwaord is incorrect, try again'
+    );
   }
 });
 
