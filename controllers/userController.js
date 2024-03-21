@@ -28,6 +28,7 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   if (user) {
+    //Jwt cookie
     generateToken(res, user._id);
 
     res.status(201).json({
@@ -71,12 +72,15 @@ const loginUser = asyncHandler(async (req, res) => {
 
 // @desc    Logout user and clear cookie
 // @route   POST /user/logout
-// @access  Public
+// @access  Private
 const logoutUser = asyncHandler(async (req, res) => {
   res.clearCookie('jwt');
   res.status(200).json({ message: 'Logged out successfully' });
 });
 
+// @desc    temporary password for user
+// @route   GET /user/:token
+// @access  Public
 const tempPassword = asyncHandler(async (req, res) => {
   const { token } = req.params;
   const user = await User.findOne({ tempPassword: token });
@@ -94,6 +98,9 @@ const tempPassword = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    new password for user
+// @route   PUT /user/new-password
+// @access  Public
 const newPassword = asyncHandler(async (req, res) => {
   const { tempToken, password } = req.body;
 
@@ -120,6 +127,9 @@ const newPassword = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    new password for user
+// @route   PUT /user/forgot-password
+// @access  Public
 const forgotPassword = asyncHandler(async (req, res) => {
   const { email } = req.body;
 

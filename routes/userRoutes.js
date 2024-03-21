@@ -16,7 +16,7 @@ router.route('/register').post(registerUser);
 // @desc  Login
 router.route('/login').post(loginUser);
 
-// @desc  New Password
+// @desc  Temporary Password
 router.route('/check-temppassword/:token').get(tempPassword);
 
 // @desc  New Password
