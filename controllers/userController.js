@@ -93,7 +93,7 @@ const tempPassword = asyncHandler(async (req, res) => {
   } else {
     res.status(404);
     throw new Error(
-      'Enter the entered temporary passwaord is incorrect, try again'
+      'Enter the entered temporary password is incorrect, try again'
     );
   }
 });
