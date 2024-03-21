@@ -18,7 +18,7 @@ app.use(cors({ credentials: true, origin: true }));
 app.use(cookieParser());
 
 app.get('/', (req, res) => {
-  res.send('Url Shortener API is running....');
+  res.send('Password Reset API is running....');
 });
 
 app.use('/user', userRoutes);
